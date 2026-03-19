@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>torgloxene's blog</title><link>https://Andsy10.github.io/</link><description>Recent content on torgloxene's blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 20 Mar 2026 04:43:52 +0800</lastBuildDate><atom:link href="https://Andsy10.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>迷宫如何表意</title><link>https://Andsy10.github.io/posts/how-does-maze-express-meaning/</link><pubDate>Tue, 17 Mar 2026 02:36:00 +0800</pubDate><guid>https://Andsy10.github.io/posts/how-does-maze-express-meaning/</guid><description>&lt;p&gt;&lt;strong&gt;整理自 &amp;lt;&lt;a href="https://www.bilibili.com/video/BV1ii4y1P7Uy/?spm_id_from=333.1007.top_right_bar_window_default_collection.content.click&amp;amp;vd_source=6caf5e5f093da078903c9d3ce0c52d18"&gt;王洪喆：“巨洞探险”与电子游戏的媒介物质谱系&lt;/a&gt;&amp;gt;&lt;/strong&gt; &lt;br/&gt;&lt;/p&gt;
+&lt;h2 id="开始"&gt;开始&lt;/h2&gt;
+&lt;p&gt;我们首先从1995年的这个小册子开始说起，它的名字叫 《The Craft of Adventure》（冒险的手艺）。它的作者是格雷姆·纳尔逊（Graham Nelson），他生于1968年，是一位英国的数学家、诗人，并且是一个剑桥的研究员。同时他还有一个身份，他是互动式小说（Interactive Fiction）或者互动式冒险游戏社群当中的一个非常著名的设计系统，叫做 Inform 系统的开发者和创建者。他同时做了很多关于游戏交互的设计师的手册，其中最著名的一个手册就是2001年的第四版，待会儿还会提到。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;在1995年的《The Craft of Adventure》第二版当中，Nelson将电脑冒险游戏的起源回溯到了下图中的这位混血黑奴。他的名字叫史蒂芬·毕肖普（Stephen Bishop），生于1820年。也许他是现代历史上第一位职业探洞者（Caver/Spelunker），他毕生都在肯塔基州喀斯特地区的猛犸洞（Mammoth Cave）担任向导。猛犸洞是迄今为止被人类所探测过的最长的地下洞穴系统。这位向导和这座猛犸洞的故事，堪称美国国家历史与现代游戏起源的奇特交汇。 &lt;br/&gt;&lt;/p&gt;
+&lt;h2 id="猛犸洞的发现"&gt;猛犸洞的发现&lt;/h2&gt;
+&lt;p&gt;这个洞穴发现于18世纪的90年代。据传说猎人约翰·霍金（John Houchin）在追逐一头受伤的狗熊时，偶然发现了洞穴的入口。洞口处蝙蝠密布。在1812年美英战争期间，这里的蝙蝠粪便被密集的开采以溶解到硝酸盐中，提取硝石以制造火药。但在战争结束后，随着硝石价格的下跌，洞穴又一度归于沉寂，直到一具木乃伊的发现。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;商人纳乌姆·沃德（Nahum Ward）因为一次与猛犸洞的所有者查尔斯·威尔金斯（Charles Wilkins）的偶然的聊天，得到了一条线索。他于1815年的11月1日一早，带领两名向导进入了猛犸洞，以寻找一具传说中的木乃伊。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;沃德写道：“当我到达这个占地8英亩的巨大的城市中……”这是一个 Chief City（酋长城），这是猛犸洞当中一个巨大的房间，一个巨大的溶洞。他说：“没有一个支撑柱支撑整个拱顶，我感到非常的惊讶，在天堂之下，没有什么比这个地方更加宏伟的。”由于没有现成的地图，因此在山洞中的导航是一个极大的挑战。沃德写道：“我们非常的困惑，一度完全迷失了。我们终于找到自己的路，疲惫而微弱，于晚上十点钟进入了所谓的 Chief City。”但是尽管我感到非常的疲倦，我还是决定坚持下来探索这个洞。同时蝙蝠折磨着我，他们不断的向我脸上扑过来，他用手杖试图将蝙蝠从洞顶打落。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;这个探险一共持续了19个小时，直到第二天凌晨三点，他们终于到达了一处洞室，发现了传说中的这具木乃伊干尸。在他的形容当中，这是一只约6英尺高，仅重20磅的女性。她直直的坐在石棺当中，被宽大的石头包裹着。站立在它的边缘的是一块平坦的石头，覆盖着整个表面。在这个包裹的粗糙的衣服中有鹿皮，有她的工作用具、珠子、羽毛，还有其他的一些护身符。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;猛犸洞当时的所有者查尔斯·威尔金斯认为，这个木乃伊最初是在1811年的八月，在附近的硝酸盐矿洞当中被发现，这个叫做 Short Cave（肖特洞/短洞）的一个矿洞。但是被矿工搬入了猛犸洞里进行保存，因为他们认为洞穴的环境可以防止腐烂。这个木乃伊后来就被称作“猛犸洞木乃伊”。到1852年的时候，她再次获得了一个名字：Fawn Hoof（小鹿蹄）木乃伊。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;猛犸洞木乃伊从1816年5月后开始，便风靡全国。当时美国人对于这种来自西部的人工制品、化石和具有异国情调的新奇事物产生了浓厚的兴趣。这里的西部指的是当时13个殖民地以西的任何地方。“小鹿蹄”木乃伊被一家马戏团带走，吸引了美国各地的观众。最后这个木乃伊被巡回展出了60年后，被收藏在史密森学会。猛犸洞在当时能被列为世界奇迹之一，一半是出自于这具木乃伊的功劳。其实这个故事还有一个简单的讲法，就是商人纳乌姆·沃德在一个迷宫的尽头开了一个宝箱，里面开出了一个东西——就是这个意思，大家就体会一下。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;而猛犸洞得以走红的另一半功劳，则要归功于开篇所说的黑奴史蒂芬·毕肖普。我们知道自19世纪初开始，洞穴旅游在欧洲已经成为一种旅游热点。在文学中的体现，最著名的就是1864年凡尔纳出版的 《地心游记》。猛犸洞尽管因木乃伊而名声在外，但是早期的游览者却非常的少。这跟猛犸洞复杂的规模所带来的探洞风险有直接的关系。 &lt;br/&gt;&lt;/p&gt;
+&lt;h2 id="洞穴与探洞"&gt;洞穴与探洞&lt;/h2&gt;
+&lt;p&gt;在地质上，猛犸洞是肯塔基中部一系列地下洞穴系统的网络，被认为是世界上最大最复杂的洞穴系统。迄今为止我们也没有能够探测它们全部的支脉。但是我们知道，探洞这件事情古已有之。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;作为古希腊神话和哲学当中的常用譬喻，物理的洞穴也是先知活动的所在地。洞穴被当做众神的媒介，因此进入洞穴可以改变人们的意识状态，洞中的感官剥夺显然就与“神谕”相连。现代研究已经证明，减少外部刺激会导致梦境，包括释放内源性幻觉（或译为内观，指Endogenous hallucinations/phosphenes）。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;在希腊的地理环境当中，洞穴和石窟为实现完全的隔离或几乎完全的隔离的环境提供了一种简便的方法。但同时更重要的是，基于爱琴海特殊的地质条件，当地的洞穴会释放一种有毒的气体，而这种气体会引发欣快（Euphoria）和精神毒素反应。因此在希腊人那里，洞穴所具有的精神或超自然的属性，使得将先知和洞穴相连成为一种普遍知识。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;然而与古希腊人恰恰相反，与将洞穴神秘化的古代经验相反，现代洞穴探险试图将洞穴纳入理性化认知的过程。深入洞穴的探险，在任何意义上都是一项绝对的现代发明。由此，物质性的探洞就成为破解神谕的精神理性化的过程。我们知道在诸多具有科学意义的物体当中，探洞提出了某种独特的挑战。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;除了入口区域之外，洞穴大部分是不可见的。结果，洞穴通常没有引起主流科学家的注意。除了某些地形图上会标明洞穴的入口外，大多数的洞穴在地理图、卫星影像或航空照片当中都未必标明和展现。洞穴及其特征存在于没有自然光的环境当中，并包含了无数的生理和心理障碍。而只有洞穴探险者由好奇心和标记这些未知区域的动机所驱动，会涉险进入洞穴。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;系统化的洞穴勘探当然包括两方面过程。一方面是对洞穴和洞穴系统的物理的探险运动。另一方面则是田野文献工作，这涉及洞穴勘测数据和注释，洞穴入口和溶岩特征的位置和清单，书面观察报告和照片文档等媒介资料。这些数据被进一步整合为洞穴地图。当然地图是洞穴探险最重要的衍生品，地形叠加图，叙述性的描述和报告，这些报告可作为寻找更多通道和洞穴的下一步的探索工具。所以系统的档案化工作及其衍生品，使得洞穴的隐秘性质及特征引起了科学家的注意。这不仅为洞穴学的研究提供了基础，而且为广泛的相关的科学工作提供了基础，诸如考古学、进化生物学、水文学、地质学、地球微生物学、矿物学和古气候研究。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;而猛犸洞既是现代洞穴探险起源处的“原洞穴”之一。当我们进入猛犸洞的探险史时，就会发现现代洞穴探险不仅仅是一个科学与理性化的空间，而必须同时被理解为一种社会的和政治的空间。这就涉及到这位黑奴的历史。 &lt;br/&gt;&lt;/p&gt;
+&lt;h2 id="steven-bishop"&gt;Steven Bishop&lt;/h2&gt;
+&lt;p&gt;要理解猛犸洞在美国奴隶制历史当中的独特地位，我们必须回到1812年的战争期间。这个洞是硝石的主要来源，而黑奴为开采提供了主要的劳动力。在战争结束后，硝石的价格急剧下跌，采矿变得不盈利了。为了寻找新的商业机会，调查猛犸洞更深层的区域的工作随即展开，以进行旅游业的商业开发。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;由于该地区洞穴之间的商业竞争以及硝酸盐矿（Saltpeter mines）的盈利性，这些大多数的调查和地图都是保密的。在随后的几十年当中，该洞穴成为了美国和欧洲旅行者的热门旅游胜地。 &lt;br/&gt;&lt;/p&gt;</description></item><item><title>Dear Esther 中英</title><link>https://Andsy10.github.io/posts/dear-esther-cn-en/</link><pubDate>Mon, 16 Mar 2026 18:10:00 +0800</pubDate><guid>https://Andsy10.github.io/posts/dear-esther-cn-en/</guid><description>&lt;h2 id="jetty"&gt;jetty&lt;/h2&gt;
+&lt;h3 id="a-dot"&gt;A.&lt;/h3&gt;
+&lt;p&gt;亲爱的艾丝特：有时我觉得，似乎是我产下了这座岛。不知何处，经纬之间张开裂缝，它就遥远的在这里地搁浅。不论我怎样前思后想，它仍是我生命中最奇异的事件，一个拒绝所有推测的奇点。 每次归来我都会留下新的标记，期望在那绝望的时光里也能寻得些新的进展。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;Dear Esther. I sometimes feel as if I&amp;rsquo;ve given birth to this island. Somewhere, between the longitude and latitude a split opened up and it beached remotely here. No matter how hard I correlate, it remains a singularity, an alpha point in my life that refuses all hypothesis. I return each time leaving fresh markers that I hope, in the full glare of my hopelessness, will have blossomed into fresh insight in the interim. &lt;br/&gt;&lt;/p&gt;</description></item><item><title>The Hermit</title><link>https://Andsy10.github.io/posts/the-hermit/</link><pubDate>Mon, 16 Mar 2026 17:59:00 +0800</pubDate><guid>https://Andsy10.github.io/posts/the-hermit/</guid><description>&lt;p&gt;&lt;em&gt;by Thomas Parnell&lt;/em&gt; &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;Far in a wild, unknown to public view, &lt;br/&gt;
+From youth to age a rev&amp;rsquo;rend hermit grew; &lt;br/&gt;
+The moss his bed, the cave his humble cell, &lt;br/&gt;
+His food the fruits, his drink the crystal well: &lt;br/&gt;
+Remote from man, with God he pass&amp;rsquo;d the days, &lt;br/&gt;
+Pray&amp;rsquo;r all his bus&amp;rsquo;ness, all his pleasure praise. &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;A life so sacred, such serene repose, &lt;br/&gt;
+Seem&amp;rsquo;d heav&amp;rsquo;n itself, till one suggestion rose; &lt;br/&gt;
+That vice should triumph, virtue vice obey, &lt;br/&gt;
+This sprung some doubt of Providence&amp;rsquo;s sway: &lt;br/&gt;
+His hopes no more a certain prospect boast, &lt;br/&gt;
+And all the tenor of his soul is lost. &lt;br/&gt;
+So when a smooth expanse receives imprest &lt;br/&gt;
+Calm nature&amp;rsquo;s image on its wat&amp;rsquo;ry breast, &lt;br/&gt;
+Down bend the banks, the trees depending grow, &lt;br/&gt;
+And skies beneath with answering colours glow: &lt;br/&gt;
+But if a stone the gentle scene divide, &lt;br/&gt;
+Swift ruffling circles curl on ev&amp;rsquo;ry side, &lt;br/&gt;
+And glimm&amp;rsquo;ring fragments of a broken sun, &lt;br/&gt;
+Banks, trees, and skies, in thick disorder run. &lt;br/&gt;&lt;/p&gt;</description></item><item><title>org-mode 简明手册</title><link>https://Andsy10.github.io/posts/org-mode-tutorial/</link><pubDate>Mon, 16 Mar 2026 02:05:00 +0800</pubDate><guid>https://Andsy10.github.io/posts/org-mode-tutorial/</guid><description>&lt;p&gt;&lt;strong&gt;原文地址：&lt;/strong&gt; &lt;a href="https://www.cnblogs.com/Open_Source/archive/2011/07/17/2108747.html"&gt;https://www.cnblogs.com/Open_Source/archive/2011/07/17/2108747.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="1-简介"&gt;1 简介&lt;/h2&gt;
+&lt;h3 id="1-dot-1-序"&gt;1.1 序&lt;/h3&gt;
+&lt;p&gt;Org 是一个用文本方式来快速高效地做笔记、维持待办事项和做项目计划的模式。它是一个创作发布系统。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;这个文档是 Org-mode 手册的一个压缩版本。包含了所有的基本功能和命令，以及一些重要的定制提示。本文档写给不想阅读200多页手册的新手。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-dot-2-安装"&gt;1.2 安装&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;重要：&lt;/strong&gt; &lt;em&gt;如果你用的是 Emacs 或者 XEmacs 包里的 Org 版本，请跳过本节，直接阅读 1.3 节。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;如果你是从网站上下载的 Org 版本，无论是 zip 包还是 tar 文件或者是 Git 文件，最好在分发包目录里直接来设置它。把 lisp 子目录加到 Emacs 的加载路径里，可以把下面两句加在 &amp;ldquo;.emacs&amp;rdquo; 文件里：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-emacs-lisp" data-lang="emacs-lisp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;(setq load-path (&lt;span style="color:#a6e22e"&gt;cons&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;~/path/to/orgdir/lisp&amp;#34;&lt;/span&gt; load-path))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;(setq load-path (&lt;span style="color:#a6e22e"&gt;cons&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;~/path/to/orgdir/contrib/lisp&amp;#34;&lt;/span&gt; load-path))
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;为了提高速度可以用下面的 shell 命令将 Lisp 文件编译一下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;make
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;再把下面一行加到.emacs 文件里。它可以使文件中的函数自动加载，而不是启动 Org 模式时立即加载。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-emacs-lisp" data-lang="emacs-lisp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;(require &lt;span style="color:#e6db74"&gt;&amp;#39;org-install&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="1-dot-3-激活"&gt;1.3 激活&lt;/h3&gt;
+&lt;p&gt;把下面几行加到.emacs 文件里。后三行是为命令定义全局快捷键――请改成适合你自己的。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-emacs-lisp" data-lang="emacs-lisp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;;; The following lines are always needed. Choose your own keys.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;(add-to-list &lt;span style="color:#e6db74"&gt;&amp;#39;auto-mode-alist&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;#39;&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;\\.org\\&amp;#39;&amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;.&lt;/span&gt; org-mode))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;(add-hook &lt;span style="color:#e6db74"&gt;&amp;#39;org-mode-hook&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;turn-on-font-lock&lt;/span&gt;) &lt;span style="color:#75715e"&gt;; not needed when global-font-lock-mode is on&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;(global-set-key &lt;span style="color:#e6db74"&gt;&amp;#34;\C-cl&amp;#34;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;org-store-link&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;(global-set-key &lt;span style="color:#e6db74"&gt;&amp;#34;\C-ca&amp;#34;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;org-agenda&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;(global-set-key &lt;span style="color:#e6db74"&gt;&amp;#34;\C-cb&amp;#34;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;org-iswitchb&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;设置之后，打开.org 扩展的文件会自动进入 org 模式。&lt;/p&gt;</description></item><item><title>使用 Emacs + org-mode + ox-hugo 搭建静态博客</title><link>https://Andsy10.github.io/posts/emacs-org-hugo-blog-guide/</link><pubDate>Sun, 15 Mar 2026 17:30:00 +0800</pubDate><guid>https://Andsy10.github.io/posts/emacs-org-hugo-blog-guide/</guid><description>&lt;h2 id="前言"&gt;前言&lt;/h2&gt;
+&lt;p&gt;如果你是 Emacs 用户，一定对 org-mode 这个强大的文本组织模式有所耳闻，本文将详细介绍如何结合 org-mode 与静态网站生成器 Hugo 来搭建一个极其高效且简单的博客创作流程，内容包括： &lt;br/&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hugo 的安装与配置 &lt;br/&gt;&lt;/li&gt;
+&lt;li&gt;ox-hugo 的配置 &lt;br/&gt;&lt;/li&gt;
+&lt;li&gt;写作与发布流程 &lt;br/&gt;&lt;/li&gt;
+&lt;li&gt;自定义博客首页 &lt;br/&gt;&lt;/li&gt;
+&lt;li&gt;快速部署 &lt;br/&gt;&lt;/li&gt;
+&lt;li&gt;常见问题解决 &lt;br/&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;想跟随本文搭建博客，你可能需要： &lt;br/&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;能进行简单的 Emacs 配置和 org-mode 使用，了解如何安装需要的插件 &lt;br/&gt;&lt;/li&gt;
+&lt;li&gt;（非常）基础的 git 与命令行经验 &lt;br/&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="环境准备"&gt;环境准备&lt;/h2&gt;
+&lt;h3 id="1-dot-安装-hugo"&gt;1. 安装 Hugo&lt;/h3&gt;
+&lt;p&gt;Hugo 是用 Go 语言编写的静态网站生成器，以速度著称。 &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;以 Windows 平台为例，使用 Scoop 安装： &lt;br/&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scoop install hugo-extended
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装完成后验证： &lt;br/&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;hugo version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看到类似输出便安装成功（注意要有 +extended）： &lt;br/&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;hugo v0.157.0+extended windows/amd64
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="2-dot-创建-hugo-站点"&gt;2. 创建 Hugo 站点&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd your-blog-directory
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;hugo new site your-blog-name
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd your-blog-name
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="3-dot-安装主题"&gt;3. 安装主题&lt;/h3&gt;
+&lt;p&gt;此处以简洁快速的 &lt;a href="https://github.com/hanwenguo/hugo-theme-nostyleplease"&gt;nostyleplease&lt;/a&gt; 主题演示： &lt;br/&gt;&lt;/p&gt;</description></item></channel></rss>
