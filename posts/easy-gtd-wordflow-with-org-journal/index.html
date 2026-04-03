@@ -1,0 +1,225 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content='Functions to maintain a simple personal diary / journal using in Emacs. 
+开始
+本文为个人配置的介绍与分享，而非 org-journal 本身的使用教程，更多信息参见 org-journal github 主页，完整配置见文章结尾 
+从零开始搭建 org-mode 知识库或从其他软件迁移到 org-mode 无疑是十分累人的，而在系统打磨工作流程时我们也仍需要基础的、便于迁移的笔记工具，org-journal 就是这样一个功能强大且易于上手的 package，配合一些简单的自定义函数可以十分快速地搭建起一套低学习成本的轻量 GTD 日记机制。 
+安装
+首先，使用 use-package 或其他包管理器安装 org-journal 
+(use-package org-journal)
+;; 可以将以下的配置都放入 use-package 的 :config 中
+然后为 org-journal 指定一个文件夹。 
+(setq org-journal-dir "你的日记文件夹")
+模板
+org-journal 支持以天、周、月为组创建日记文件，为了更好地与 Emacs 与 org-mode 的其他相关功能联动，本文以最常见的一天一文件为例。 
+org-journal 本身提供了类似如下片段的日记模板： 
+* Tuesday, 06/04/13
+** 10:28 Company meeting
+Endless discussions about projects. Not much progress
+
+** 11:33 Work on org-journal
+For the longest time, I wanted to have a cool diary app on my
+computer. However, I simply lacked the right tool for that job. After
+many hours of searching, I finally found PersonalDiary on EmacsWiki.
+PersonalDiary is a very simple diary system based on the emacs
+calendar. It works pretty well, but I don&#39;t really like that it only
+uses unstructured text.
+
+Thus, I spent the last two hours making that diary use org-mode
+and represent every entry as an org-mode headline. Very cool!
+
+** 15:33 Work on org-journal
+Now my journal automatically creates the right headlines (adds the
+current time stamp if on the current day, does not add a time stamp
+for any other day). Additionally, it automatically collapses the
+headlines in the org-file to the right level (shows everything if in
+view mode, shows only headlines in new-entry-mode). Emacs and elisp
+are really cool!
+
+** 16:40 Work on org-journal
+I uploaded my journal mode to marmalade and Github! Awesome!
+
+** TODO teach org-journal how to brew coffee
+所谓配置实际就是修改与优化它的结构，此处的核心是这几个变量 '><title>用 org-journal 搭建轻量 GTD 工作流</title><link rel="shortcut icon" type=image/x-icon href=/><link rel=stylesheet href=/css/main.51652302d3a998bf7887aed5c2cf89141bbebdf45a2c8f87b0717a3cf4f51c4e53c694c328fb1de78c3a625a1c01f80745bf1f2f42c040647a245cbbb6c2d1d7.css integrity="sha512-UWUjAtOpmL94h67Vws+JFBu+vfRaLI+HsHF6PPT1HE5TxpTDKPsd54w6YlocAfgHRb8fL0LAQGR6JFy7tsLR1w=="></head><body a=auto><main class=page-content aria-label=Content><div class=w><div class=post-meta><a href=/>..</a><p><time datetime="2026-04-03 08:38:00 +0800 +0800">2026-04-03</time></p></div><article><h1>用 org-journal 搭建轻量 GTD 工作流</h1><p><em>Functions to maintain a simple personal diary / journal using in Emacs.</em><br></p><h2 id=开始>开始</h2><p><strong>本文为个人配置的介绍与分享，而非 org-journal 本身的使用教程，更多信息参见 <a href=https://github.com/bastibe/org-journal>org-journal github 主页</a>，完整配置见文章结尾</strong><br></p><p>从零开始搭建 org-mode 知识库或从其他软件迁移到 org-mode 无疑是十分累人的，而在系统打磨工作流程时我们也仍需要基础的、便于迁移的笔记工具，org-journal 就是这样一个功能强大且易于上手的 package，配合一些简单的自定义函数可以十分快速地搭建起一套低学习成本的轻量 GTD 日记机制。<br></p><h2 id=安装>安装</h2><p>首先，使用 use-package 或其他包管理器安装 org-journal<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-emacs-lisp data-lang=emacs-lisp><span style=display:flex><span>(use-package org-journal)
+</span></span><span style=display:flex><span><span style=color:#75715e>;; 可以将以下的配置都放入 use-package 的 :config 中</span>
+</span></span></code></pre></div><p>然后为 org-journal 指定一个文件夹。<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-emacs-lisp data-lang=emacs-lisp><span style=display:flex><span>(setq org-journal-dir <span style=color:#e6db74>&#34;你的日记文件夹&#34;</span>)
+</span></span></code></pre></div><h2 id=模板>模板</h2><p>org-journal 支持以天、周、月为组创建日记文件，为了更好地与 Emacs 与 org-mode 的其他相关功能联动，本文以最常见的一天一文件为例。<br></p><p>org-journal 本身提供了类似如下片段的日记模板：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-org data-lang=org><span style=display:flex><span>*<span style=font-weight:700> Tuesday, 06/04/13</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>**</span> 10:28 Company meeting
+</span></span><span style=display:flex><span>Endless discussions about projects. Not much progress
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>**</span> 11:33 Work on org-journal
+</span></span><span style=display:flex><span>For the longest time, I wanted to have a cool diary app on my
+</span></span><span style=display:flex><span>computer. However, I simply lacked the right tool for that job. After
+</span></span><span style=display:flex><span>many hours of searching, I finally found PersonalDiary on EmacsWiki.
+</span></span><span style=display:flex><span>PersonalDiary is a very simple diary system based on the emacs
+</span></span><span style=display:flex><span>calendar. It works pretty well, but I don&#39;t really like that it only
+</span></span><span style=display:flex><span>uses unstructured text.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Thus, I spent the last two hours making that diary use org-mode
+</span></span><span style=display:flex><span>and represent every entry as an org-mode headline. Very cool!
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>**</span> 15:33 Work on org-journal
+</span></span><span style=display:flex><span>Now my journal automatically creates the right headlines (adds the
+</span></span><span style=display:flex><span>current time stamp if on the current day, does not add a time stamp
+</span></span><span style=display:flex><span>for any other day). Additionally, it automatically collapses the
+</span></span><span style=display:flex><span>headlines in the org-file to the right level (shows everything if in
+</span></span><span style=display:flex><span>view mode, shows only headlines in new-entry-mode). Emacs and elisp
+</span></span><span style=display:flex><span>are really cool!
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>**</span> 16:40 Work on org-journal
+</span></span><span style=display:flex><span>I uploaded my journal mode to marmalade and Github! Awesome!
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>**</span><span style=color:#960050;background-color:#1e0010> TODO</span> teach org-journal how to brew coffee
+</span></span></code></pre></div><p>所谓配置实际就是修改与优化它的结构，此处的核心是这几个变量<br></p><dl><dt><code>org-journal-file-format</code></dt><dd>日记文件的文件名格式<br></dd><dt><code>org-journal-file-header</code></dt><dd>日记开头自动插入的文件头<br></dd><dt><code>org-journal-date-format</code></dt><dd>文件头之后创建的日记模板<br></dd><dt><code>org-journal-time-prefix</code></dt><dd>在文件中创建的项（上图中的二级标题）的前缀格式<br></dd><dt><code>org-journal-time-format</code></dt><dd>创建的项的标题内容与属性格式<br></dd><dt><code>org-journal-carryover-items</code></dt><dd>需要继承到下一天的 TODO 项<br></dd></dl><p>这是配置与简单讲解：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-emacs-lisp data-lang=emacs-lisp><span style=display:flex><span>(setq org-journal-file-format <span style=color:#e6db74>&#34;%Y-%m-%d.org&#34;</span> <span style=color:#75715e>;; 在日记目录中创建如 2026-1-1.org 格式的文件</span>
+</span></span><span style=display:flex><span>      org-journal-file-header <span style=color:#e6db74>&#34;#+title: Daily Journal\n#+category: journal\n#+STARTUP: content\n\n&#34;</span> <span style=color:#75715e>;; 插入简单的文件头，设置 category 便于使用 agenda 等工具浏览与检索</span>
+</span></span><span style=display:flex><span>        org-journal-date-format (lambda (time) <span style=color:#75715e>;; 为日记项，也就是一级标题添加属性，&#34;[]&#34; 表示不活跃时间戳，不会在 agenda 中显示该项</span>
+</span></span><span style=display:flex><span>                                  (<span style=color:#a6e22e>format</span> <span style=color:#e6db74>&#34;* %s %s\n:PROPERTIES:\n:Created: [%s]\n:END:&#34;</span>
+</span></span><span style=display:flex><span>                                          (<span style=color:#a6e22e>format-time-string</span> <span style=color:#e6db74>&#34;%Y-%m-%d&#34;</span> time)
+</span></span><span style=display:flex><span>                                          (<span style=color:#a6e22e>format-time-string</span> <span style=color:#e6db74>&#34;%a&#34;</span> time)
+</span></span><span style=display:flex><span>                                          (<span style=color:#a6e22e>format-time-string</span> <span style=color:#e6db74>&#34;%Y-%m-%d %a&#34;</span> time)))
+</span></span><span style=display:flex><span>        org-journal-time-prefix <span style=color:#e6db74>&#34;\n*** TODO &#34;</span>                                       <span style=color:#75715e>;; 新建项的前缀，此处设为三级标题的 TODO 项</span>
+</span></span><span style=display:flex><span>        org-journal-time-format <span style=color:#e6db74>&#34;%m-%d \n:PROPERTIES:\n:Created: &lt;%Y-%m-%d %a %H:%M:%S&gt;\n:END:\n&#34;</span> <span style=color:#75715e>;; 新建项的内容，插入当前时间 &#34;%m-%d&#34;并添加属性，&#34;&lt;&gt;&#34; 表示活跃时间戳</span>
+</span></span><span style=display:flex><span>        org-journal-hide-entries-p <span style=color:#66d9ef>t</span>                                                              <span style=color:#75715e>;; 创建新项时折叠其他标题</span>
+</span></span><span style=display:flex><span>    org-journal-carryover-items <span style=color:#e6db74>&#34;TODO=\&#34;TODO\&#34;|TODO=\&#34;STARTED\&#34;|TODO=\&#34;WAITING\&#34;|TODO=\&#34;SOMEDAY\&#34;&#34;</span>) <span style=color:#75715e>;; 将继承到下一天的 TODO 项，如果有额外的自定义 TODO 可以手动添加</span>
+</span></span></code></pre></div><p>如果你不希望让日记中只剩下这些严肃的 TODO ，可以引入一个函数：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-emacs-lisp data-lang=emacs-lisp><span style=display:flex><span>(defun my/journal-setup-new-day ()
+</span></span><span style=display:flex><span>    (save-excursion
+</span></span><span style=display:flex><span>      (org-back-to-heading)
+</span></span><span style=display:flex><span>      (let ((day-end (save-excursion (org-end-of-subtree) (<span style=color:#a6e22e>point</span>))))
+</span></span><span style=display:flex><span>        (unless (<span style=color:#a6e22e>search-forward</span> <span style=color:#e6db74>&#34;** daily&#34;</span> day-end <span style=color:#66d9ef>t</span>)
+</span></span><span style=display:flex><span>          (<span style=color:#a6e22e>goto-char</span> day-end)
+</span></span><span style=display:flex><span>          (<span style=color:#a6e22e>insert</span> <span style=color:#e6db74>&#34;\n\n** daily\n\n\n&#34;</span>)
+</span></span><span style=display:flex><span>          (<span style=color:#a6e22e>insert</span> <span style=color:#e6db74>&#34;** tasks\n&#34;</span>)))))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>(add-hook <span style=color:#e6db74>&#39;org-journal-mode-hook</span> <span style=color:#e6db74>&#39;font-lock-update</span>) <span style=color:#75715e>;; 记得添加 hook</span>
+</span></span></code></pre></div><p>这样会将 daily 与 tasks 作为两个标题区分开。<br></p><p>现在执行 <code>org-journal-new-entry</code> 后，创建的日记文件看起来大概是：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-org data-lang=org><span style=display:flex><span><span style=color:#75715e>#+title</span><span style=color:#75715e>: Daily Journal</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#+category</span><span style=color:#75715e>: journal</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#+STARTUP</span><span style=color:#75715e>: content</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>*<span style=font-weight:700> 2026-04-03 Fri</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>:PROPERTIES:
+</span></span></span><span style=display:flex><span><span style=color:#75715e>:Created: [2026-04-03 Fri]
+</span></span></span><span style=display:flex><span><span style=color:#75715e>:END:</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>**</span> daily
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>这里是平常的日记
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>**</span> tasks
+</span></span><span style=display:flex><span><span style=color:#75715e>***</span><span style=color:#960050;background-color:#1e0010> TODO</span> 04-03 这里是任务
+</span></span><span style=display:flex><span><span style=color:#75715e>:PROPERTIES:
+</span></span></span><span style=display:flex><span><span style=color:#75715e>:Created: &lt;2026-04-03 Fir 04:59:15&gt;
+</span></span></span><span style=display:flex><span><span style=color:#75715e>:END:</span>
+</span></span></code></pre></div><h2 id=继承-todo>继承 TODO</h2><p>org-journal 最重要的功能之一就是自动转移之前文件中的 TODO 项，但在默认情况下这会导致之前文件中的 TODO 被删除，而如果不删除旧文件中的 TODO 又会导致 agenda 被不同文件中反复继承的同一 TODO 项填满，此处可以利用 org-mode 的 COMMENT 关键字，自动将旧文件中的 TODO 状态改为 COMMENT。<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-emacs-lisp data-lang=emacs-lisp><span style=display:flex><span>(defun my/org-journal-mark-old-todos-as-comment (entries)
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;Change TODO entry&#39;s TODO keyword to COMMENT after carryover.&#34;</span>
+</span></span><span style=display:flex><span>  (save-excursion
+</span></span><span style=display:flex><span>    (let* ((todo-keywords (cl-remove-if
+</span></span><span style=display:flex><span>                           (lambda (kw) (<span style=color:#a6e22e>member</span> kw org-done-keywords))
+</span></span><span style=display:flex><span>                           org-todo-keywords-1))
+</span></span><span style=display:flex><span>           (todo-pattern (when todo-keywords
+</span></span><span style=display:flex><span>                           (regexp-opt todo-keywords <span style=color:#e6db74>&#39;words</span>))))
+</span></span><span style=display:flex><span>      (when todo-pattern
+</span></span><span style=display:flex><span>        (<span style=color:#a6e22e>mapc</span> (lambda (entry)
+</span></span><span style=display:flex><span>                (let ((start (<span style=color:#a6e22e>car</span> entry))
+</span></span><span style=display:flex><span>                      (end (<span style=color:#a6e22e>set-marker</span> (<span style=color:#a6e22e>make-marker</span>) (cadr entry))))
+</span></span><span style=display:flex><span>                  (<span style=color:#a6e22e>goto-char</span> start)
+</span></span><span style=display:flex><span>                  (while (<span style=color:#a6e22e>re-search-forward</span> (<span style=color:#a6e22e>concat</span> <span style=color:#e6db74>&#34;^\\(\\*+ \\)&#34;</span> todo-pattern) end <span style=color:#66d9ef>t</span>)
+</span></span><span style=display:flex><span>                    (<span style=color:#a6e22e>replace-match</span> <span style=color:#e6db74>&#34;\\1COMMENT&#34;</span> <span style=color:#66d9ef>t</span> <span style=color:#66d9ef>nil</span>))
+</span></span><span style=display:flex><span>                  (<span style=color:#a6e22e>set-marker</span> end <span style=color:#66d9ef>nil</span>)))
+</span></span><span style=display:flex><span>              (<span style=color:#a6e22e>reverse</span> entries))))
+</span></span><span style=display:flex><span>    (save-buffer)))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>(setq org-journal-handle-old-carryover-fn <span style=color:#a6e22e>#&#39;</span>my/org-journal-mark-old-todos-as-comment)
+</span></span></code></pre></div><p>为防止出现部分情况下不跳过 COMMENT 的情况，可以手动指定需要跳过的关键字：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-emacs-lisp data-lang=emacs-lisp><span style=display:flex><span>(setq org-agenda-skip-function-global
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#39;</span>(org-agenda-skip-entry-if <span style=color:#e6db74>&#39;todo</span> <span style=color:#f92672>&#39;</span>(<span style=color:#e6db74>&#34;COMMENT&#34;</span>)))
+</span></span></code></pre></div><h2 id=优化>优化</h2><h3 id=自动跳转光标>自动跳转光标</h3><p>新建 TODO 项后移动光标到标题尾部再开始打字显得实在麻烦，使用<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-emacs-lisp data-lang=emacs-lisp><span style=display:flex><span>(defun my/journal-position-cursor-after-time ()
+</span></span><span style=display:flex><span>  (when (derived-mode-p <span style=color:#e6db74>&#39;org-journal-mode</span>)
+</span></span><span style=display:flex><span>    (org-back-to-heading)
+</span></span><span style=display:flex><span>    (<span style=color:#a6e22e>end-of-line</span>)))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>(add-hook <span style=color:#e6db74>&#39;org-journal-after-entry-create-hook</span> <span style=color:#a6e22e>#&#39;</span>my/journal-position-cursor-after-time)
+</span></span></code></pre></div><p>即可在创建新项后将光标快速放至标题行尾。<br></p><h3 id=在-calendar-中快速打开日记>在 Calendar 中快速打开日记</h3><p>在回看曾经的日记时，使用 Emacs 的 Calendar 功能会十分便利，但 org-journal 并没有提供直接通过 Calendar 打开相应日记的功能，这里可以使用此函数：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-emacs-lisp data-lang=emacs-lisp><span style=display:flex><span>(defun org-journal-open-entry-for-editing (<span style=color:#66d9ef>&amp;optional</span> event)
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;Open journal entry for the date under cursor in calendar for editing.&#34;</span>
+</span></span><span style=display:flex><span>    (interactive
+</span></span><span style=display:flex><span>     (<span style=color:#a6e22e>list</span> last-nonmenu-event))
+</span></span><span style=display:flex><span>    (let* ((date (calendar-cursor-to-date <span style=color:#66d9ef>t</span> event))
+</span></span><span style=display:flex><span>           (time (org-journal--calendar-date-&gt;time date))
+</span></span><span style=display:flex><span>           (org-journal-file (org-journal--get-entry-path time)))
+</span></span><span style=display:flex><span>      (if (<span style=color:#a6e22e>file-exists-p</span> org-journal-file)
+</span></span><span style=display:flex><span>          (progn
+</span></span><span style=display:flex><span>            (<span style=color:#a6e22e>funcall</span> org-journal-find-file org-journal-file)
+</span></span><span style=display:flex><span>            (unless (org-journal--daily-p)
+</span></span><span style=display:flex><span>              (org-journal--goto-entry date)))
+</span></span><span style=display:flex><span>    (<span style=color:#a6e22e>message</span> <span style=color:#e6db74>&#34;No journal entry for this date.&#34;</span>))))
+</span></span></code></pre></div><h3 id=刷新高亮>刷新高亮</h3><p>为了一些额外功能，在日记文件中 org-journal 会自动开启一个叫做 org-journal-mode 的 major mode，但此模式在某些情况下可能会出现渲染 bug，需要刷新语法高亮：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-emacs-lisp data-lang=emacs-lisp><span style=display:flex><span>(add-hook <span style=color:#e6db74>&#39;org-journal-mode-hook</span> <span style=color:#e6db74>&#39;font-lock-update</span>)
+</span></span></code></pre></div><h2 id=完整配置>完整配置</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-emacs-lisp data-lang=emacs-lisp><span style=display:flex><span>(use-package org-journal
+</span></span><span style=display:flex><span>  :config
+</span></span><span style=display:flex><span>  (setq org-journal-dir <span style=color:#e6db74>&#34;你的日记目录&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  (setq org-journal-file-format <span style=color:#e6db74>&#34;%Y-%m-%d.org&#34;</span>
+</span></span><span style=display:flex><span>        org-journal-file-header <span style=color:#e6db74>&#34;#+title: Daily Journal\n#+category: journal\n#+STARTUP: content\n\n&#34;</span>
+</span></span><span style=display:flex><span>        org-journal-date-format (lambda (time)
+</span></span><span style=display:flex><span>                                  (<span style=color:#a6e22e>format</span> <span style=color:#e6db74>&#34;* %s %s\n:PROPERTIES:\n:Created: [%s]\n:END:&#34;</span>
+</span></span><span style=display:flex><span>                                          (<span style=color:#a6e22e>format-time-string</span> <span style=color:#e6db74>&#34;%Y-%m-%d&#34;</span> time)
+</span></span><span style=display:flex><span>                                          (<span style=color:#a6e22e>format-time-string</span> <span style=color:#e6db74>&#34;%a&#34;</span> time)
+</span></span><span style=display:flex><span>                                          (<span style=color:#a6e22e>format-time-string</span> <span style=color:#e6db74>&#34;%Y-%m-%d %a&#34;</span> time)))
+</span></span><span style=display:flex><span>        org-journal-time-prefix <span style=color:#e6db74>&#34;\n*** TODO &#34;</span>
+</span></span><span style=display:flex><span>        org-journal-time-format <span style=color:#e6db74>&#34;%m-%d \n:PROPERTIES:\n:Created: &lt;%Y-%m-%d %a %H:%M:%S&gt;\n:END:\n&#34;</span>
+</span></span><span style=display:flex><span>        org-journal-hide-entries-p <span style=color:#66d9ef>t</span>
+</span></span><span style=display:flex><span>        org-journal-carryover-items <span style=color:#e6db74>&#34;TODO=\&#34;TODO\&#34;|TODO=\&#34;STARTED\&#34;|TODO=\&#34;WAITING\&#34;|TODO=\&#34;SOMEDAY\&#34;&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  (defun my/journal-setup-new-day ()
+</span></span><span style=display:flex><span>    (save-excursion
+</span></span><span style=display:flex><span>      (org-back-to-heading)
+</span></span><span style=display:flex><span>      (let ((day-end (save-excursion (org-end-of-subtree) (<span style=color:#a6e22e>point</span>))))
+</span></span><span style=display:flex><span>        (unless (<span style=color:#a6e22e>search-forward</span> <span style=color:#e6db74>&#34;** daily&#34;</span> day-end <span style=color:#66d9ef>t</span>)
+</span></span><span style=display:flex><span>          (<span style=color:#a6e22e>goto-char</span> day-end)
+</span></span><span style=display:flex><span>          (<span style=color:#a6e22e>insert</span> <span style=color:#e6db74>&#34;\n\n** daily\n\n\n&#34;</span>)
+</span></span><span style=display:flex><span>          (<span style=color:#a6e22e>insert</span> <span style=color:#e6db74>&#34;** tasks\n&#34;</span>)))))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  (add-hook <span style=color:#e6db74>&#39;org-journal-after-header-create-hook</span> <span style=color:#a6e22e>#&#39;</span>my/journal-setup-new-day)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  (defun my/org-journal-mark-old-todos-as-comment (entries)
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;Change TODO entry&#39;s TODO keyword to COMMENT after carryover.&#34;</span>
+</span></span><span style=display:flex><span>    (save-excursion
+</span></span><span style=display:flex><span>      (let* ((todo-keywords (cl-remove-if
+</span></span><span style=display:flex><span>                             (lambda (kw) (<span style=color:#a6e22e>member</span> kw org-done-keywords))
+</span></span><span style=display:flex><span>                             org-todo-keywords-1))
+</span></span><span style=display:flex><span>             (todo-pattern (when todo-keywords
+</span></span><span style=display:flex><span>                             (regexp-opt todo-keywords <span style=color:#e6db74>&#39;words</span>))))
+</span></span><span style=display:flex><span>        (when todo-pattern
+</span></span><span style=display:flex><span>          (<span style=color:#a6e22e>mapc</span> (lambda (entry)
+</span></span><span style=display:flex><span>                  (let ((start (<span style=color:#a6e22e>car</span> entry))
+</span></span><span style=display:flex><span>                        (end (<span style=color:#a6e22e>set-marker</span> (<span style=color:#a6e22e>make-marker</span>) (cadr entry))))
+</span></span><span style=display:flex><span>                    (<span style=color:#a6e22e>goto-char</span> start)
+</span></span><span style=display:flex><span>                    (while (<span style=color:#a6e22e>re-search-forward</span> (<span style=color:#a6e22e>concat</span> <span style=color:#e6db74>&#34;^\\(\\*+ \\)&#34;</span> todo-pattern) end <span style=color:#66d9ef>t</span>)
+</span></span><span style=display:flex><span>                      (<span style=color:#a6e22e>replace-match</span> <span style=color:#e6db74>&#34;\\1COMMENT&#34;</span> <span style=color:#66d9ef>t</span> <span style=color:#66d9ef>nil</span>))
+</span></span><span style=display:flex><span>                    (<span style=color:#a6e22e>set-marker</span> end <span style=color:#66d9ef>nil</span>)))
+</span></span><span style=display:flex><span>                (<span style=color:#a6e22e>reverse</span> entries))))
+</span></span><span style=display:flex><span>      (save-buffer)))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  (setq org-journal-handle-old-carryover-fn <span style=color:#a6e22e>#&#39;</span>my/org-journal-mark-old-todos-as-comment)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  (setq org-agenda-skip-function-global
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#39;</span>(org-agenda-skip-entry-if <span style=color:#e6db74>&#39;todo</span> <span style=color:#f92672>&#39;</span>(<span style=color:#e6db74>&#34;COMMENT&#34;</span>)))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  (defun my/journal-position-cursor-after-time ()
+</span></span><span style=display:flex><span>    (when (derived-mode-p <span style=color:#e6db74>&#39;org-journal-mode</span>)
+</span></span><span style=display:flex><span>      (org-back-to-heading)
+</span></span><span style=display:flex><span>      (<span style=color:#a6e22e>end-of-line</span>)))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  (add-hook <span style=color:#e6db74>&#39;org-journal-after-entry-create-hook</span> <span style=color:#a6e22e>#&#39;</span>my/journal-position-cursor-after-time)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  (defun org-journal-open-entry-for-editing (<span style=color:#66d9ef>&amp;optional</span> event)
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;Open journal entry for the date under cursor in calendar for editing.&#34;</span>
+</span></span><span style=display:flex><span>    (interactive
+</span></span><span style=display:flex><span>     (<span style=color:#a6e22e>list</span> last-nonmenu-event))
+</span></span><span style=display:flex><span>    (let* ((date (calendar-cursor-to-date <span style=color:#66d9ef>t</span> event))
+</span></span><span style=display:flex><span>           (time (org-journal--calendar-date-&gt;time date))
+</span></span><span style=display:flex><span>           (org-journal-file (org-journal--get-entry-path time)))
+</span></span><span style=display:flex><span>      (if (<span style=color:#a6e22e>file-exists-p</span> org-journal-file)
+</span></span><span style=display:flex><span>          (progn
+</span></span><span style=display:flex><span>            (<span style=color:#a6e22e>funcall</span> org-journal-find-file org-journal-file)
+</span></span><span style=display:flex><span>            (unless (org-journal--daily-p)
+</span></span><span style=display:flex><span>              (org-journal--goto-entry date)))
+</span></span><span style=display:flex><span>        (<span style=color:#a6e22e>message</span> <span style=color:#e6db74>&#34;No journal entry for this date.&#34;</span>))))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  (add-hook <span style=color:#e6db74>&#39;org-journal-mode-hook</span> <span style=color:#e6db74>&#39;font-lock-update</span>))
+</span></span></code></pre></div></article></div></main></body></html>
