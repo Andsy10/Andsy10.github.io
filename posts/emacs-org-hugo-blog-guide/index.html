@@ -1,0 +1,220 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="前言
+如果你是 Emacs 用户，一定对 org-mode 这个强大的文本组织模式有所耳闻，本文将详细介绍如何结合 org-mode 与静态网站生成器 Hugo 来搭建一个极其高效且简单的博客创作流程，内容包括： 
+
+Hugo 的安装与配置 
+ox-hugo 的配置 
+写作与发布流程 
+自定义博客首页 
+快速部署 
+常见问题解决 
+
+想跟随本文搭建博客，你可能需要： 
+
+能进行简单的 Emacs 配置和 org-mode 使用，了解如何安装需要的插件 
+（非常）基础的 git 与命令行经验 
+
+环境准备
+1. 安装 Hugo
+Hugo 是用 Go 语言编写的静态网站生成器，以速度著称。 
+以 Windows 平台为例，使用 Scoop 安装： 
+scoop install hugo-extended
+安装完成后验证： 
+hugo version
+看到类似输出便安装成功（注意要有 +extended）： 
+hugo v0.157.0+extended windows/amd64
+2. 创建 Hugo 站点
+cd your-blog-directory
+hugo new site your-blog-name
+cd your-blog-name
+3. 安装主题
+此处以简洁快速的 nostyleplease 主题演示： "><title>使用 Emacs + org-mode + ox-hugo 搭建静态博客</title><link rel="shortcut icon" type=image/x-icon href=/><link rel=stylesheet href=/css/main.51652302d3a998bf7887aed5c2cf89141bbebdf45a2c8f87b0717a3cf4f51c4e53c694c328fb1de78c3a625a1c01f80745bf1f2f42c040647a245cbbb6c2d1d7.css integrity="sha512-UWUjAtOpmL94h67Vws+JFBu+vfRaLI+HsHF6PPT1HE5TxpTDKPsd54w6YlocAfgHRb8fL0LAQGR6JFy7tsLR1w=="></head><body a=auto><main class=page-content aria-label=Content><div class=w><div class=post-meta><a href=/>..</a><p><time datetime="2026-03-15 17:30:00 +0800 +0800">2026-03-15</time></p></div><article><h1>使用 Emacs + org-mode + ox-hugo 搭建静态博客</h1><h2 id=前言>前言</h2><p>如果你是 Emacs 用户，一定对 org-mode 这个强大的文本组织模式有所耳闻，本文将详细介绍如何结合 org-mode 与静态网站生成器 Hugo 来搭建一个极其高效且简单的博客创作流程，内容包括：<br></p><ul><li>Hugo 的安装与配置<br></li><li>ox-hugo 的配置<br></li><li>写作与发布流程<br></li><li>自定义博客首页<br></li><li>快速部署<br></li><li>常见问题解决<br></li></ul><p>想跟随本文搭建博客，你可能需要：<br></p><ul><li>能进行简单的 Emacs 配置和 org-mode 使用，了解如何安装需要的插件<br></li><li>（非常）基础的 git 与命令行经验<br></li></ul><h2 id=环境准备>环境准备</h2><h3 id=1-dot-安装-hugo>1. 安装 Hugo</h3><p>Hugo 是用 Go 语言编写的静态网站生成器，以速度著称。<br></p><p>以 Windows 平台为例，使用 Scoop 安装：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-shell data-lang=shell><span style=display:flex><span>scoop install hugo-extended
+</span></span></code></pre></div><p>安装完成后验证：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-shell data-lang=shell><span style=display:flex><span>hugo version
+</span></span></code></pre></div><p>看到类似输出便安装成功（注意要有 +extended）：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>hugo v0.157.0+extended windows/amd64
+</span></span></code></pre></div><h3 id=2-dot-创建-hugo-站点>2. 创建 Hugo 站点</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-shell data-lang=shell><span style=display:flex><span>cd your-blog-directory
+</span></span><span style=display:flex><span>hugo new site your-blog-name
+</span></span><span style=display:flex><span>cd your-blog-name
+</span></span></code></pre></div><h3 id=3-dot-安装主题>3. 安装主题</h3><p>此处以简洁快速的 <a href=https://github.com/hanwenguo/hugo-theme-nostyleplease>nostyleplease</a> 主题演示：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-shell data-lang=shell><span style=display:flex><span>git clone https://github.com/hanwenguo/hugo-theme-nostyleplease.git themes/nostyleplease
+</span></span></code></pre></div><p>修改 <code>hugo.toml</code> 启用主题：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-toml data-lang=toml><span style=display:flex><span><span style=color:#a6e22e>baseURL</span> = <span style=color:#e6db74>&#39;https://yourdomain.com&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>languageCode</span> = <span style=color:#e6db74>&#39;zh-cn&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>title</span> = <span style=color:#e6db74>&#39;your blog name&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>theme</span> = <span style=color:#e6db74>&#39;nostyleplease&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>markup</span>.<span style=color:#a6e22e>goldmark</span>.<span style=color:#a6e22e>renderer</span>]
+</span></span><span style=display:flex><span><span style=color:#a6e22e>unsafe</span> = <span style=color:#66d9ef>true</span>
+</span></span></code></pre></div><p>最后两行用于允许不安全 HTML ， 例如换行标签。<br></p><h2 id=emacs-配置>Emacs 配置</h2><h3 id=1-dot-安装-ox-hugo>1. 安装 ox-hugo</h3><p>ox-hugo 是一个将 org-mode 导出为 Hugo 兼容的 Markdown 的工具。<br></p><p>在 Emacs 配置中使用 use-package 或其他包管理器安装：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-emacs-lisp data-lang=emacs-lisp><span style=display:flex><span>(use-package ox-hugo
+</span></span><span style=display:flex><span>  :ensure <span style=color:#66d9ef>t</span>
+</span></span><span style=display:flex><span>  :after ox)
+</span></span></code></pre></div><h3 id=2-dot-创建-org-文件结构>2. 创建 org 文件结构</h3><p>在项目根目录或新建目录中创建 <code>all-posts.org</code> ，或其他任意名称的 .org 文件：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-org data-lang=org><span style=display:flex><span><span style=color:#75715e>#+hugo_base_dir</span><span style=color:#75715e>: your-absolute-path</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#+hugo_auto_set_lastmod</span><span style=color:#75715e>: t</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#+OPTIONS</span><span style=color:#75715e>: \n:t</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>*<span style=font-weight:700> Blog Ideas</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>**</span><span style=color:#960050;background-color:#1e0010> TODO</span> 第一篇博客
+</span></span><span style=display:flex><span><span style=color:#75715e>:PROPERTIES:
+</span></span></span><span style=display:flex><span><span style=color:#75715e>:EXPORT_FILE_NAME: first-post
+</span></span></span><span style=display:flex><span><span style=color:#75715e>:END:</span>
+</span></span><span style=display:flex><span>这是第一篇博客的内容...
+</span></span></code></pre></div><p>配置说明:<br></p><dl><dt><code>#+hugo_base_dir:</code></dt><dd>指定 Hugo 站点的根目录<br></dd><dt><code>#+hugo_auto_set_lastmod: t</code></dt><dd>自动添加最后修改时间<br></dd><dt><code>#+OPTIONS: \n:t</code></dt><dd>保留换行符<br></dd><dt><code>EXPORT_FILE_NAME</code></dt><dd>导出的文件名（不带 .md 后缀）<br></dd><dt><code>CLOSED</code></dt><dd>文章发布时间（使用 org 的 TODO 状态切换自动生成， DONE 即为发布）<br></dd></dl><h3 id=3-dot-添加-org-capture-模板-推荐>3. 添加 org capture 模板（推荐）</h3><p>在你的 Emacs 配置文件中添加：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-emacs-lisp data-lang=emacs-lisp><span style=display:flex><span><span style=color:#75715e>;; Populates only the EXPORT_FILE_NAME property in the inserted heading.</span>
+</span></span><span style=display:flex><span>(with-eval-after-load <span style=color:#e6db74>&#39;org-capture</span>
+</span></span><span style=display:flex><span>  (defun org-hugo-new-subtree-post-capture-template ()
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;Returns </span><span style=color:#e6db74>`org-capture&#39;</span><span style=color:#e6db74> template string for new Hugo post.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>See </span><span style=color:#e6db74>`org-capture-templates&#39;</span><span style=color:#e6db74> for more information.&#34;</span>
+</span></span><span style=display:flex><span>    (let* ((title (<span style=color:#a6e22e>read-from-minibuffer</span> <span style=color:#e6db74>&#34;Post Title: &#34;</span>)) <span style=color:#75715e>;Prompt to enter the post title</span>
+</span></span><span style=display:flex><span>           (fname (org-hugo-slug title)))
+</span></span><span style=display:flex><span>      (<span style=color:#a6e22e>mapconcat</span> <span style=color:#a6e22e>#&#39;identity</span>
+</span></span><span style=display:flex><span>                 <span style=color:#f92672>`</span>(
+</span></span><span style=display:flex><span>                   <span style=color:#f92672>,</span>(<span style=color:#a6e22e>concat</span> <span style=color:#e6db74>&#34;* TODO &#34;</span> title)
+</span></span><span style=display:flex><span>                   <span style=color:#e6db74>&#34;:PROPERTIES:&#34;</span>
+</span></span><span style=display:flex><span>                   <span style=color:#f92672>,</span>(<span style=color:#a6e22e>concat</span> <span style=color:#e6db74>&#34;:EXPORT_FILE_NAME: &#34;</span> fname)
+</span></span><span style=display:flex><span>                   <span style=color:#e6db74>&#34;:END:&#34;</span>
+</span></span><span style=display:flex><span>                   <span style=color:#e6db74>&#34;%?\n&#34;</span>)          <span style=color:#75715e>;Place the cursor here finally</span>
+</span></span><span style=display:flex><span>                 <span style=color:#e6db74>&#34;\n&#34;</span>)))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  (add-to-list <span style=color:#e6db74>&#39;org-capture-templates</span>
+</span></span><span style=display:flex><span>               <span style=color:#f92672>&#39;</span>(<span style=color:#e6db74>&#34;h&#34;</span>                <span style=color:#75715e>;`org-capture&#39; binding + h</span>
+</span></span><span style=display:flex><span>                 <span style=color:#e6db74>&#34;Hugo post&#34;</span>
+</span></span><span style=display:flex><span>                 entry
+</span></span><span style=display:flex><span>                 <span style=color:#75715e>;; It is assumed that below file is present in `org-directory&#39;</span>
+</span></span><span style=display:flex><span>                 <span style=color:#75715e>;; and that it has a &#34;Blog Ideas&#34; heading. It can even be a</span>
+</span></span><span style=display:flex><span>                 <span style=color:#75715e>;; symlink pointing to the actual location of all-posts.org!</span>
+</span></span><span style=display:flex><span>                 (file+olp <span style=color:#e6db74>&#34;all-posts.org&#34;</span> <span style=color:#e6db74>&#34;Blog Ideas&#34;</span>)
+</span></span><span style=display:flex><span>                 (function org-hugo-new-subtree-post-capture-template))))
+</span></span></code></pre></div><p>将最下方的 <code>all-posts.org</code> 替换为你的博客绝对路径， <code>Blog Ideas</code> 任意更改。<br></p><p>然后打开 org-capture ，便可以看到新添加的 <code>Hugo post</code> 选项。<br></p><p><em>更多教程参考 <a href=https://ox-hugo.scripter.co/doc/org-capture-setup/>ox-hugo 官方文档相关章节</a></em><br></p><h2 id=写作流程>写作流程</h2><h3 id=1-dot-新建博客>1. 新建博客</h3><p>在 org 文件中添加新的 TODO 项：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-org data-lang=org><span style=display:flex><span><span style=color:#75715e>**</span><span style=color:#960050;background-color:#1e0010> TODO</span> 文章标题
+</span></span><span style=display:flex><span><span style=color:#75715e>:PROPERTIES:
+</span></span></span><span style=display:flex><span><span style=color:#75715e>:EXPORT_FILE_NAME: article-slug
+</span></span></span><span style=display:flex><span><span style=color:#75715e>:END:</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>文章正文...
+</span></span></code></pre></div><p>或使用刚刚配置的 capture 模板。<br></p><h3 id=2-dot-发布文章>2. 发布文章</h3><p>当文章完成后，将 TODO 改为 DONE：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-org data-lang=org><span style=display:flex><span><span style=color:#75715e>**</span><span style=color:#e6db74> DONE</span> 文章标题
+</span></span><span style=display:flex><span><span style=color:#75715e>CLOSED: </span><span style=color:#75715e>[2026-03-15 Sun 17:30]</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>:PROPERTIES:
+</span></span></span><span style=display:flex><span><span style=color:#75715e>:EXPORT_FILE_NAME: article-slug
+</span></span></span><span style=display:flex><span><span style=color:#75715e>:END:</span>
+</span></span></code></pre></div><p>使用快捷键 <code>C-c C-e H H</code> 手动导出当前文章。<br></p><h3 id=3-dot-自动导出>3. 自动导出</h3><p>在与 <code>all-posts.org</code> 相同的目录下添加 <code>.dir-locals.el</code> 文件，在文件中粘贴：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-emacs-lisp data-lang=emacs-lisp><span style=display:flex><span>((org-mode <span style=color:#f92672>.</span> ((<span style=color:#a6e22e>eval</span> <span style=color:#f92672>.</span> (org-hugo-auto-export-mode)))))
+</span></span></code></pre></div><p>即可在保存文件时自动导出 markdown 。<br></p><p><em>详细配置参考 <a href=https://ox-hugo.scripter.co/doc/auto-export-on-saving/>ox-hugo 官方文档相关章节</a></em><br></p><h3 id=4-dot-本地预览>4. 本地预览</h3><p>在终端中运行：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-shell data-lang=shell><span style=display:flex><span>hugo server
+</span></span></code></pre></div><p>访问对应地址实时预览效果。<br></p><p>如果要预览未发布（状态为 draft/TODO ）的笔记，可以使用：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-shell data-lang=shell><span style=display:flex><span>hugo server -D
+</span></span></code></pre></div><h2 id=样式定制>样式定制</h2><h3 id=自定义首页布局>自定义首页布局</h3><p>这是一个简单的首页模板，创建 <code>layouts/index.html</code> 可以覆盖主题默认：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-html data-lang=html><span style=display:flex><span>{{ define &#34;main&#34; }}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>style</span>&gt;
+</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>post-list</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>list-style</span>: <span style=color:#66d9ef>none</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>padding</span>: <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>post-item</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>margin</span>: <span style=color:#ae81ff>10</span><span style=color:#66d9ef>px</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>border</span>: <span style=color:#ae81ff>1</span><span style=color:#66d9ef>px</span> <span style=color:#66d9ef>solid</span> <span style=color:#ae81ff>#ddd</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>border-radius</span>: <span style=color:#ae81ff>4</span><span style=color:#66d9ef>px</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>post-summary</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>padding</span>: <span style=color:#ae81ff>10</span><span style=color:#66d9ef>px</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>post-meta</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>color</span>: <span style=color:#ae81ff>#666</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>font-size</span>: <span style=color:#ae81ff>0.9</span><span style=color:#66d9ef>em</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>&lt;/<span style=color:#f92672>style</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>ul</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;post-list&#34;</span>&gt;
+</span></span><span style=display:flex><span>{{ range (where .Site.Pages &#34;Section&#34; &#34;posts&#34;) }}
+</span></span><span style=display:flex><span>  {{ if not .IsNode }}
+</span></span><span style=display:flex><span>  &lt;<span style=color:#f92672>li</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;post-item&#34;</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#f92672>details</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#f92672>summary</span>&gt;
+</span></span><span style=display:flex><span>        &lt;<span style=color:#f92672>strong</span>&gt;&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ .Permalink }}&#34;</span>&gt;{{ .Title }}&lt;/<span style=color:#f92672>a</span>&gt;&lt;/<span style=color:#f92672>strong</span>&gt;
+</span></span><span style=display:flex><span>        &lt;<span style=color:#f92672>span</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;post-meta&#34;</span>&gt; — Date: {{ .Date.Format &#34;2006-01-02 15:04&#34; }} | Lastmod: {{ .Lastmod.Format &#34;2006-01-02 15:04&#34; }}&lt;/<span style=color:#f92672>span</span>&gt;
+</span></span><span style=display:flex><span>      &lt;/<span style=color:#f92672>summary</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#f92672>div</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;post-summary&#34;</span>&gt;
+</span></span><span style=display:flex><span>        {{ if .Summary }}
+</span></span><span style=display:flex><span>          {{ .Summary }}
+</span></span><span style=display:flex><span>          &lt;<span style=color:#f92672>p</span>&gt;&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ .Permalink }}&#34;</span>&gt;More →&lt;/<span style=color:#f92672>a</span>&gt;&lt;/<span style=color:#f92672>p</span>&gt;
+</span></span><span style=display:flex><span>        {{ else }}
+</span></span><span style=display:flex><span>          &lt;<span style=color:#f92672>p</span>&gt;&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ .Permalink }}&#34;</span>&gt;More →&lt;/<span style=color:#f92672>a</span>&gt;&lt;/<span style=color:#f92672>p</span>&gt;
+</span></span><span style=display:flex><span>        {{ end }}
+</span></span><span style=display:flex><span>      &lt;/<span style=color:#f92672>div</span>&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#f92672>details</span>&gt;
+</span></span><span style=display:flex><span>  &lt;/<span style=color:#f92672>li</span>&gt;
+</span></span><span style=display:flex><span>  {{ end }}
+</span></span><span style=display:flex><span>{{ end }}
+</span></span><span style=display:flex><span>&lt;/<span style=color:#f92672>ul</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>{{ end }}
+</span></span></code></pre></div><h3 id=数学公式支持>数学公式支持</h3><p>如果 LaTex 因某些原因无法正常渲染，需要添加 shortcode 配置。<br></p><p>创建 shortcode 文件 <code>layouts/shortcodes/texi.html</code> ：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-html data-lang=html><span style=display:flex><span>&lt;<span style=color:#f92672>span</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;math inline&#34;</span>&gt;\( {{ .Inner }} \)&lt;/<span style=color:#f92672>span</span>&gt;
+</span></span></code></pre></div><p>和 <code>layouts/shortcodes/texd.html</code> ：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-html data-lang=html><span style=display:flex><span>&lt;<span style=color:#f92672>div</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;math display&#34;</span>&gt;\[ {{ .Inner}} \]&lt;/<span style=color:#f92672>div</span>&gt;
+</span></span></code></pre></div><p>在 org 中使用：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-org data-lang=org><span style=display:flex><span>行内公式: {{&lt;<span style=color:#e6db74> texi </span>&gt;}} \varphi {{&lt;<span style=color:#e6db74> /texi </span>&gt;}}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>显示公式:
+</span></span><span style=display:flex><span><div class="math display">\[  \]</div>
+
+</span></span></code></pre></div><h2 id=在线部署>在线部署</h2><h3 id=准备仓库>准备仓库</h3><p>将 hugo 根目录初始化为 git 仓库，该仓库用于管理源码， push 后再新建一个仓库，新仓库用于部署，必须设为公开（除非升级 GitHub Pro）。<br></p><p>如果将新仓库的仓库名设为 <code>用户名.github.io</code> ，部署后的博客域名便没有仓库名后缀。<br></p><p>由于 hugo 默认不会清理 <code>public/</code> 目录，推荐将其添加到 gitignore 中，避免上传已删除的博客。<br></p><h3 id=生成-token>生成 Token</h3><ul><li>点击 github 头像 -> Settings -> Developer settings -> Personal access tokens -> Tokens(classic) -> Generate new token(classic)<br></li><li>勾选所有 repo 相关<br></li><li>复制生成的 token (该 token 只显示一次)<br></li></ul><h3 id=配置-actions>配置 Actions</h3><p>在私有仓库中<br></p><ul><li>点击 Settings -> Secrets and variables -> Actions -> New repository secret<br></li><li>Name 填任意名称，此处以 <code>PERSONAL_TOKEN</code> 为例<br></li><li>Secret 粘贴刚刚生成的 token -> Add secret<br></li></ul><p>配置好 token 后，在私有仓库根目录创建 <code>.github/workflows/deploy.yml</code><br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy Hugo</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>push</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>branches</span>: [ <span style=color:#ae81ff>main ]</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>deploy</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v4</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>submodules</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Setup Hugo</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-hugo@v2</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>hugo-version</span>: <span style=color:#e6db74>&#39;latest&#39;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>extended</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: <span style=color:#ae81ff>hugo --minify</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-gh-pages@v3</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>personal_token</span>: <span style=color:#ae81ff>${{ secrets.PERSONAL_TOKEN }}</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>external_repository</span>: <span style=color:#ae81ff>你的用户名/你的用户名.github.io</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>publish_branch</span>: <span style=color:#ae81ff>main</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>publish_dir</span>: <span style=color:#ae81ff>./public</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>force_orphan</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>user_name</span>: <span style=color:#e6db74>&#39;github-actions[bot]&#39;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>user_email</span>: <span style=color:#e6db74>&#39;github-actions[bot]@users.noreply.github.com&#39;</span>
+</span></span></code></pre></div><p>其中， <code>user_name</code> 和 <code>user_email</code> 用于以 bot 身份进行提交，避免不必要的个人 commit 记录和贡献统计，推荐保留。<br></p><p>注意替换你的实际 token 名称与 github 用户名。<br></p><h3 id=触发部署>触发部署</h3><p>将这个 workflow 文件 push 到仓库中后，可以在 Actions 中查看运行状态。<br></p><p>成功后点击 Settings -> Pages 查看链接，点击即可访问，此后只需修改私有仓库便会自动部署。<br></p><h3 id=一键发布或预览>一键发布或预览</h3><p>如果想要更加便捷地发布博客，可以在 Emacs 配置中添加：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-emacs-lisp data-lang=emacs-lisp><span style=display:flex><span>(defun my-blog-publish ()
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;publish blog , git add/commit/push , generate commit message&#34;</span>
+</span></span><span style=display:flex><span>  (interactive)
+</span></span><span style=display:flex><span>  (save-buffer)
+</span></span><span style=display:flex><span>  (let* ((blog-dir <span style=color:#e6db74>&#34;你的 git 仓库绝对路径&#34;</span>)
+</span></span><span style=display:flex><span>         (timestamp (<span style=color:#a6e22e>format-time-string</span> <span style=color:#e6db74>&#34;%Y-%m-%d %H:%M:%S&#34;</span>))
+</span></span><span style=display:flex><span>         (default-directory blog-dir))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>;; git add</span>
+</span></span><span style=display:flex><span>    (<span style=color:#a6e22e>message</span> <span style=color:#e6db74>&#34;Adding files...&#34;</span>)
+</span></span><span style=display:flex><span>    (eshell-command <span style=color:#e6db74>&#34;git add .&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>;; git commit with timestamp</span>
+</span></span><span style=display:flex><span>    (<span style=color:#a6e22e>message</span> <span style=color:#e6db74>&#34;Committing: %s&#34;</span> timestamp)
+</span></span><span style=display:flex><span>    (eshell-command (<span style=color:#a6e22e>format</span> <span style=color:#e6db74>&#34;git commit -m \&#34;Update: %s\&#34;&#34;</span> timestamp))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>;; git push</span>
+</span></span><span style=display:flex><span>    (<span style=color:#a6e22e>message</span> <span style=color:#e6db74>&#34;Pushing to remote...&#34;</span>)
+</span></span><span style=display:flex><span>    (let ((exit-code (eshell-command <span style=color:#e6db74>&#34;git push&#34;</span>)))
+</span></span><span style=display:flex><span>      (if (<span style=color:#a6e22e>eq</span> exit-code <span style=color:#66d9ef>t</span>)
+</span></span><span style=display:flex><span>      (<span style=color:#a6e22e>message</span> <span style=color:#e6db74>&#34;Push may have failed or nothing to push, check *Messages* buffer for details&#34;</span>)
+</span></span><span style=display:flex><span>    (<span style=color:#a6e22e>message</span> <span style=color:#e6db74>&#34;Push successfully %s&#34;</span> timestamp)))))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>(global-set-key (kbd <span style=color:#e6db74>&#34;你想要的快捷键&#34;</span>) <span style=color:#e6db74>&#39;my-blog-publish</span>)
+</span></span></code></pre></div><p>使用此命令便自动生成 commit 信息并发布博客。<br></p><p>同样，添加这段配置可以自动打开浏览器进行本地预览：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-emacs-lisp data-lang=emacs-lisp><span style=display:flex><span>(defun my-blog-preview ()
+</span></span><span style=display:flex><span>  (interactive)
+</span></span><span style=display:flex><span>  (save-buffer)
+</span></span><span style=display:flex><span>  (let ((default-directory <span style=color:#e6db74>&#34;你的 hugo 仓库绝对路径&#34;</span>))
+</span></span><span style=display:flex><span>    <span style=color:#75715e>;; 启动 hugo server</span>
+</span></span><span style=display:flex><span>    (<span style=color:#a6e22e>start-process</span> <span style=color:#e6db74>&#34;hugo-server&#34;</span> <span style=color:#e6db74>&#34;*hugo-server*&#34;</span> 
+</span></span><span style=display:flex><span>                   <span style=color:#e6db74>&#34;hugo&#34;</span> <span style=color:#e6db74>&#34;server&#34;</span> <span style=color:#e6db74>&#34;-D&#34;</span> <span style=color:#e6db74>&#34;--bind&#34;</span> <span style=color:#e6db74>&#34;0.0.0.0&#34;</span> <span style=color:#e6db74>&#34;--port&#34;</span> <span style=color:#e6db74>&#34;1313&#34;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#75715e>;; 等待服务器启动</span>
+</span></span><span style=display:flex><span>    (<span style=color:#a6e22e>sleep-for</span> <span style=color:#ae81ff>2</span>)
+</span></span><span style=display:flex><span>    <span style=color:#75715e>;; 自动打开浏览器</span>
+</span></span><span style=display:flex><span>    (browse-url <span style=color:#e6db74>&#34;http://localhost:1313&#34;</span>)))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>(global-set-key (kbd <span style=color:#e6db74>&#34;你想要的快捷键&#34;</span>) <span style=color:#e6db74>&#39;my-blog-preview</span>)
+</span></span></code></pre></div><p>如果想结束预览，关闭 <code>*hugo-server*</code> buffer。<br></p><h2 id=常见问题>常见问题</h2><h3 id=文章不显示>文章不显示</h3><p>检查：<br></p><ol><li>是否设置了 <code>CLOSED</code> 时间戳<br></li><li>是否将 <code>TODO</code> 改为 <code>DONE</code><br></li><li>是否成功导出<br></li></ol><h3 id=主题中的示例文章>主题中的示例文章</h3><p>主题目录下可能有 <code>content/posts/</code> ，删除其中的示例文件。<br></p><h3 id=lastmod-不更新>lastmod 不更新</h3><p>确保 org 文件中有：<br></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-org data-lang=org><span style=display:flex><span><span style=color:#75715e>#+hugo_auto_set_lastmod</span><span style=color:#75715e>: t</span>
+</span></span></code></pre></div><p>并且每次导出前保存文件。<br></p><h2 id=总结>总结</h2><p>这套工作流的优势：<br></p><ol><li><strong>高效文本写作</strong> :: 使用 org-mode，专注内容<br></li><li><strong>版本控制友好</strong> :: 便于 git 管理<br></li><li><strong>自动化</strong> :: 自动生成时间戳、目录、RSS 等<br></li><li><strong>部署便捷</strong> :: 更新仓库自动部署<br></li><li><strong>可定制</strong> :: Hugo 模板完全可自定义<br></li><li><strong>快速</strong> :: Hugo 生成速度极快，秒级构建，实时预览<br></li></ol><p>Happy Blogging!<br></p><h2 id=参考资源>参考资源</h2><ul><li><a href=https://ox-hugo.scripter.co/>ox-hugo 官方文档</a><br></li><li><a href=https://gohugo.io/documentation/>Hugo 官方文档</a><br></li><li><a href=https://orgmode.org/>org-mode 官方文档</a><br></li><li><a href=https://www.cnblogs.com/Open_Source/archive/2011/07/17/2108747.html>org-mode 简明手册</a><br></li><li><a href="https://www.bilibili.com/video/BV1ZR4y1X7D7?vd_source=6caf5e5f093da078903c9d3ce0c52d18">21天学会emacs：第11天使用org mode写博客</a></li></ul></article></div></main></body></html>
